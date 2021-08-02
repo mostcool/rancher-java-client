@@ -2,18 +2,11 @@ package io.rancher.service;
 
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
-import io.rancher.type.ClusterCatalog;
 import io.rancher.type.CatalogRefresh;
-
+import io.rancher.type.ClusterCatalog;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
+import retrofit2.http.*;
 
 public interface ClusterCatalogService {
 
@@ -33,9 +26,8 @@ public interface ClusterCatalogService {
     Call<ClusterCatalog> update(@Path("id") String id, @Body ClusterCatalog clusterCatalog);
 
     @DELETE("clusterCatalog/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
+
     @POST("clusterCatalog/{id}?action=refresh")
     Call<CatalogRefresh> refresh(@Path("id") String id);
-    
 }

@@ -1,19 +1,14 @@
 package io.rancher.type;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class ClusterScanConfig extends AbstractType {
-    
+
     @JsonProperty("cisScanConfig")
     private CisScanConfig cisScanConfig;
-    
-    public CisScanConfig getCisScanConfig() {
-        return this.cisScanConfig;
-    }
-
-    public void setCisScanConfig(CisScanConfig cisScanConfig) {
-      this.cisScanConfig = cisScanConfig;
-    }
-    
 }

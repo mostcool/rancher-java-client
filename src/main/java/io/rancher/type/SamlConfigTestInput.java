@@ -2,18 +2,13 @@ package io.rancher.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class SamlConfigTestInput extends AbstractType {
-    
+
     @JsonProperty("finalRedirectUrl")
     private String finalRedirectUrl;
-    
-    public String getFinalRedirectUrl() {
-        return this.finalRedirectUrl;
-    }
-
-    public void setFinalRedirectUrl(String finalRedirectUrl) {
-      this.finalRedirectUrl = finalRedirectUrl;
-    }
-    
 }

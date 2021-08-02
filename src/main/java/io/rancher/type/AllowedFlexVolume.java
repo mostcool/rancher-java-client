@@ -2,18 +2,13 @@ package io.rancher.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class AllowedFlexVolume extends AbstractType {
-    
+
     @JsonProperty("driver")
     private String driver;
-    
-    public String getDriver() {
-        return this.driver;
-    }
-
-    public void setDriver(String driver) {
-      this.driver = driver;
-    }
-    
 }

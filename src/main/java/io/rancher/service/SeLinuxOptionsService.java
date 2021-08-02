@@ -3,8 +3,8 @@ package io.rancher.service;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.SeLinuxOptions;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface SeLinuxOptionsService {
@@ -25,6 +25,5 @@ public interface SeLinuxOptionsService {
     Call<SeLinuxOptions> update(@Path("id") String id, @Body SeLinuxOptions seLinuxOptions);
 
     @DELETE("seLinuxOptions/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

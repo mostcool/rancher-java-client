@@ -3,8 +3,8 @@ package io.rancher.service;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.QueryClusterGraph;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface QueryClusterGraphService {
@@ -25,6 +25,5 @@ public interface QueryClusterGraphService {
     Call<QueryClusterGraph> update(@Path("id") String id, @Body QueryClusterGraph queryClusterGraph);
 
     @DELETE("queryClusterGraph/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

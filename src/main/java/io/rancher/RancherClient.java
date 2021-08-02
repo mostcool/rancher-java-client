@@ -37,7 +37,7 @@ public class RancherClient {
                         return chain.proceed(request);
                     }
                 });
-                //.sslSocketFactory(SSLSocketClient.getSSLSocketFactory());
+        //.sslSocketFactory(SSLSocketClient.getSSLSocketFactory());
 
         this.retrofit = new Retrofit.Builder()
                 .baseUrl(url)

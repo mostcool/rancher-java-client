@@ -1,19 +1,14 @@
 package io.rancher.type.project;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class PodReadinessGate extends AbstractType {
-    
+
     @JsonProperty("conditionType")
     private String conditionType;
-    
-    public String getConditionType() {
-        return this.conditionType;
-    }
-
-    public void setConditionType(String conditionType) {
-      this.conditionType = conditionType;
-    }
-    
 }

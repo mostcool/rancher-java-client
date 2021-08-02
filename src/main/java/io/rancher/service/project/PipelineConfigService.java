@@ -3,8 +3,8 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.PipelineConfig;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface PipelineConfigService {
@@ -25,6 +25,5 @@ public interface PipelineConfigService {
     Call<PipelineConfig> update(@Path("id") String id, @Body PipelineConfig pipelineConfig);
 
     @DELETE("pipelineConfig/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

@@ -3,8 +3,8 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.NamespacedSshAuth;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface NamespacedSshAuthService {
@@ -25,6 +25,5 @@ public interface NamespacedSshAuthService {
     Call<NamespacedSshAuth> update(@Path("id") String id, @Body NamespacedSshAuth namespacedSshAuth);
 
     @DELETE("namespacedSshAuth/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

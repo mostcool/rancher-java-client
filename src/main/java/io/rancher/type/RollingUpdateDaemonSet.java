@@ -2,18 +2,13 @@ package io.rancher.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class RollingUpdateDaemonSet extends AbstractType {
-    
+
     @JsonProperty("maxUnavailable")
     private Integer maxUnavailable;
-    
-    public Integer getMaxUnavailable() {
-        return this.maxUnavailable;
-    }
-
-    public void setMaxUnavailable(Integer maxUnavailable) {
-      this.maxUnavailable = maxUnavailable;
-    }
-    
 }

@@ -5,8 +5,8 @@ import io.rancher.base.TypeCollection;
 import io.rancher.type.AdfsConfig;
 import io.rancher.type.SamlConfigTestInput;
 import io.rancher.type.SamlConfigTestOutput;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface AdfsConfigService {
@@ -27,9 +27,8 @@ public interface AdfsConfigService {
     Call<AdfsConfig> update(@Path("id") String id, @Body AdfsConfig adfsConfig);
 
     @DELETE("adfsConfig/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
+
     @POST("adfsConfig/{id}?action=testAndEnable")
     Call<SamlConfigTestOutput> testAndEnable(@Path("id") String id, @Body SamlConfigTestInput samlConfigTestInput);
-    
 }

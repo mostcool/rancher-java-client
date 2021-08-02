@@ -2,20 +2,15 @@ package io.rancher.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
 import java.util.List;
 
+@Data
+@Accessors(chain = true)
 public class NodePoolStatus extends AbstractType {
-    
+
     @JsonProperty("conditions")
     private List<Condition> conditions;
-    
-    public List<Condition> getConditions() {
-        return this.conditions;
-    }
-
-    public void setConditions(List<Condition> conditions) {
-      this.conditions = conditions;
-    }
-    
 }

@@ -3,8 +3,8 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.NamespacedSecret;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface NamespacedSecretService {
@@ -25,6 +25,5 @@ public interface NamespacedSecretService {
     Call<NamespacedSecret> update(@Path("id") String id, @Body NamespacedSecret namespacedSecret);
 
     @DELETE("namespacedSecret/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

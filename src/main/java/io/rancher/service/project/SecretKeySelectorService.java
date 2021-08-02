@@ -3,16 +3,9 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.SecretKeySelector;
-
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
+import retrofit2.http.*;
 
 public interface SecretKeySelectorService {
 
@@ -32,6 +25,5 @@ public interface SecretKeySelectorService {
     Call<SecretKeySelector> update(@Path("id") String id, @Body SecretKeySelector secretKeySelector);
 
     @DELETE("secretKeySelector/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

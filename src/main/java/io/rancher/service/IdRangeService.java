@@ -3,8 +3,8 @@ package io.rancher.service;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.IdRange;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface IdRangeService {
@@ -25,6 +25,5 @@ public interface IdRangeService {
     Call<IdRange> update(@Path("id") String id, @Body IdRange idRange);
 
     @DELETE("idRange/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

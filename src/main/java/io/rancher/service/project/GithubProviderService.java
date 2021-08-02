@@ -5,8 +5,8 @@ import io.rancher.base.TypeCollection;
 import io.rancher.type.project.AuthUserInput;
 import io.rancher.type.project.GithubProvider;
 import io.rancher.type.project.SourceCodeCredential;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface GithubProviderService {
@@ -27,9 +27,8 @@ public interface GithubProviderService {
     Call<GithubProvider> update(@Path("id") String id, @Body GithubProvider githubProvider);
 
     @DELETE("githubProvider/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
+
     @POST("githubProvider/{id}?action=login")
     Call<SourceCodeCredential> login(@Path("id") String id, @Body AuthUserInput authUserInput);
-    
 }

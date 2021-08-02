@@ -1,0 +1,29 @@
+package io.rancher.service.cluster;
+
+import io.rancher.base.Filters;
+import io.rancher.base.TypeCollection;
+import io.rancher.type.cluster.NfsVolumeSource;
+import okhttp3.ResponseBody;
+import retrofit2.Call;
+import retrofit2.http.*;
+
+public interface NfsVolumeSourceService {
+
+    @GET("nfsVolumeSource")
+    Call<TypeCollection<NfsVolumeSource>> list();
+
+    @GET("nfsVolumeSource")
+    Call<TypeCollection<NfsVolumeSource>> list(@QueryMap Filters filters);
+
+    @GET("nfsVolumeSource/{id}")
+    Call<NfsVolumeSource> get(@Path("id") String id);
+
+    @POST("nfsVolumeSource")
+    Call<NfsVolumeSource> create(@Body NfsVolumeSource nfsVolumeSource);
+
+    @PUT("nfsVolumeSource/{id}")
+    Call<NfsVolumeSource> update(@Path("id") String id, @Body NfsVolumeSource nfsVolumeSource);
+
+    @DELETE("nfsVolumeSource/{id}")
+    Call<ResponseBody> delete(@Path("id") String id);
+}

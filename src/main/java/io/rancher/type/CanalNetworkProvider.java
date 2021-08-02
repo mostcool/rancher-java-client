@@ -1,19 +1,14 @@
 package io.rancher.type;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class CanalNetworkProvider extends AbstractType {
-    
+
     @JsonProperty("iface")
     private String iface;
-    
-    public String getIface() {
-        return this.iface;
-    }
-
-    public void setIface(String iface) {
-      this.iface = iface;
-    }
-    
 }

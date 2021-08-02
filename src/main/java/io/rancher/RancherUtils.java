@@ -1,5 +1,6 @@
 package io.rancher;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import io.rancher.RancherClient.Config;
 import io.rancher.base.Filters;
 import io.rancher.service.ClusterService;
@@ -23,6 +24,8 @@ public class RancherUtils {
     private static final Logger logger = LogManager.getLogger(RancherUtils.class);
 
     static ConcurrentMap<String, RancherUtils> RANCHERSMAP = new ConcurrentHashMap<>();
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
 
     private RancherClient client;
 
@@ -68,13 +71,6 @@ public class RancherUtils {
         return new RancherUtils(rancherClient);
     }
 
-    public List<Node> listNode(String clusterId) throws IOException {
-        Filters filters = new Filters();
-        filters.put("clusterId", clusterId);
-        NodeService nodeService = client.type(NodeService.class);
-        return nodeService.list(filters).execute().body().getData();
-    }
-
     public List<Cluster> listCluster() throws IOException {
         ClusterService clusterService = client.type(ClusterService.class);
         return clusterService.list().execute().body().getData();
@@ -87,6 +83,13 @@ public class RancherUtils {
         } else {
             logger.error("create Cluster failed!");
         }
+    }
+
+    public List<Node> listNode(String clusterId) throws IOException {
+        Filters filters = new Filters();
+        filters.put("clusterId", clusterId);
+        NodeService nodeService = client.type(NodeService.class);
+        return nodeService.list(filters).execute().body().getData();
     }
 
     public List<Project> listProject() throws IOException {

@@ -4,8 +4,8 @@ import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.GoogleOauthConfig;
 import io.rancher.type.GoogleOauthConfigTestOutput;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface GoogleOauthConfigService {
@@ -26,9 +26,8 @@ public interface GoogleOauthConfigService {
     Call<GoogleOauthConfig> update(@Path("id") String id, @Body GoogleOauthConfig googleOauthConfig);
 
     @DELETE("googleOauthConfig/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
+
     @POST("googleOauthConfig/{id}?action=configureTest")
     Call<GoogleOauthConfigTestOutput> configureTest(@Path("id") String id, @Body GoogleOauthConfig googleOauthConfig);
-    
 }

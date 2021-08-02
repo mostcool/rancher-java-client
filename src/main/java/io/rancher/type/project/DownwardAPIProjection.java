@@ -1,20 +1,16 @@
 package io.rancher.type.project;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
+@Data
+@Accessors(chain = true)
 public class DownwardAPIProjection extends AbstractType {
-    
+
     @JsonProperty("items")
     private List<DownwardAPIVolumeFile> items;
-    
-    public List<DownwardAPIVolumeFile> getItems() {
-        return this.items;
-    }
-
-    public void setItems(List<DownwardAPIVolumeFile> items) {
-      this.items = items;
-    }
-    
 }

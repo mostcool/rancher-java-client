@@ -1,19 +1,14 @@
 package io.rancher.type;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class GenerateKubeConfigOutput extends AbstractType {
-    
+
     @JsonProperty("config")
     private String config;
-    
-    public String getConfig() {
-        return this.config;
-    }
-
-    public void setConfig(String config) {
-      this.config = config;
-    }
-    
 }

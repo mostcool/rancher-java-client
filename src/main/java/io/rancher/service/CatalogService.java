@@ -4,16 +4,9 @@ import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.Catalog;
 import io.rancher.type.CatalogRefresh;
-
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
-import retrofit2.http.Body;
-import retrofit2.http.DELETE;
-import retrofit2.http.GET;
-import retrofit2.http.POST;
-import retrofit2.http.PUT;
-import retrofit2.http.Path;
-import retrofit2.http.QueryMap;
+import retrofit2.http.*;
 
 public interface CatalogService {
 
@@ -33,9 +26,8 @@ public interface CatalogService {
     Call<Catalog> update(@Path("id") String id, @Body Catalog catalog);
 
     @DELETE("catalog/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
+
     @POST("catalog/{id}?action=refresh")
     Call<CatalogRefresh> refresh(@Path("id") String id);
-    
 }

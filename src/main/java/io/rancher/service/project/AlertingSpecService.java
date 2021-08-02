@@ -3,8 +3,8 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.AlertingSpec;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface AlertingSpecService {
@@ -25,6 +25,5 @@ public interface AlertingSpecService {
     Call<AlertingSpec> update(@Path("id") String id, @Body AlertingSpec alertingSpec);
 
     @DELETE("alertingSpec/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

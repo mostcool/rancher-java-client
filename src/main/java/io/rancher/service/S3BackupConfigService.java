@@ -3,8 +3,8 @@ package io.rancher.service;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.S3BackupConfig;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface S3BackupConfigService {
@@ -25,6 +25,5 @@ public interface S3BackupConfigService {
     Call<S3BackupConfig> update(@Path("id") String id, @Body S3BackupConfig s3BackupConfig);
 
     @DELETE("s3BackupConfig/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

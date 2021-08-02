@@ -2,14 +2,17 @@ package io.rancher;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.rancher.RancherClient.Config;
+import io.rancher.service.ClusterService;
 import io.rancher.service.ProjectRoleTemplateBindingService;
 import io.rancher.service.ProjectService;
 import io.rancher.service.project.WorkloadService;
+import io.rancher.type.Cluster;
 import io.rancher.type.Project;
 import io.rancher.type.ProjectRoleTemplateBinding;
 import io.rancher.type.project.Container;
 import io.rancher.type.project.DeploymentConfig;
 import io.rancher.type.project.Workload;
+import okhttp3.ResponseBody;
 import org.junit.jupiter.api.Test;
 import retrofit2.Response;
 
@@ -17,6 +20,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /**
@@ -25,6 +29,55 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 public class RancherTest {
 
     private final ObjectMapper objectMapper = new ObjectMapper();
+
+    /**
+     * 创建集群
+     */
+    @Test
+    void createCluster() throws Exception {
+        Cluster cluster = new Cluster();
+        cluster.setName("gk-" + System.currentTimeMillis());
+
+        Config config = new Config(
+                new URL("https://rootcloud-dev.sinochem.com/v3/"),
+                "token-b5tdf",
+                "v9nfm9656ggr4tw9rgzvrsrr2b8s8lm5zb8vvpnx6tmfcbstnwrnzg"
+        );
+
+        RancherUtils rancherUtils = RancherUtils.buildUtils(config);
+        ClusterService clusterService = rancherUtils.getClient().type(ClusterService.class);
+
+        Response<Cluster> expectedResponse = clusterService.create(cluster).execute();
+        //System.out.println(expectedResponse);
+
+        cluster = expectedResponse.body();
+        System.out.println(objectMapper.writeValueAsString(cluster));
+
+        assertTrue(cluster.getId() != null);
+    }
+
+    /**
+     * 删除集群
+     */
+    @Test
+    void deleteCluster() throws Exception {
+        Config config = new Config(
+                new URL("https://rootcloud-dev.sinochem.com/v3/"),
+                "token-b5tdf",
+                "v9nfm9656ggr4tw9rgzvrsrr2b8s8lm5zb8vvpnx6tmfcbstnwrnzg"
+        );
+
+        RancherUtils rancherUtils = RancherUtils.buildUtils(config);
+        ClusterService clusterService = rancherUtils.getClient().type(ClusterService.class);
+
+        Response<ResponseBody> response = clusterService.delete("c-2qxt8").execute();
+        System.out.println(response);
+
+        ResponseBody body = response.body();
+        System.out.println(body.string());
+
+        assertNotNull(body.string());
+    }
 
     /**
      * 创建项目
@@ -48,9 +101,27 @@ public class RancherTest {
         //System.out.println(expectedResponse);
 
         project = expectedResponse.body();
-        //System.out.println(objectMapper.writeValueAsString(project));
+        System.out.println(objectMapper.writeValueAsString(project));
 
         assertTrue(project.getId() != null);
+    }
+
+    @Test
+    void listProject() throws Exception {
+        Config config = new Config(
+                new URL("https://rootcloud-dev.sinochem.com/v3/"),
+                "token-b5tdf",
+                "v9nfm9656ggr4tw9rgzvrsrr2b8s8lm5zb8vvpnx6tmfcbstnwrnzg"
+        );
+
+        RancherUtils rancherUtils = RancherUtils.buildUtils(config);
+        //List<Project> projects = rancherUtils.listProject();
+        //System.out.println(objectMapper.writeValueAsString(projects));
+
+        List<Project> projects = rancherUtils.listProjectByClusterId("c-v2brj");
+        System.out.println(objectMapper.writeValueAsString(projects));
+
+        assertNotNull(projects);
     }
 
     /**

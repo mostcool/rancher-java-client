@@ -1,19 +1,14 @@
 package io.rancher.type;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class CertExpiration extends AbstractType {
-    
+
     @JsonProperty("expirationDate")
     private String expirationDate;
-    
-    public String getExpirationDate() {
-        return this.expirationDate;
-    }
-
-    public void setExpirationDate(String expirationDate) {
-      this.expirationDate = expirationDate;
-    }
-    
 }

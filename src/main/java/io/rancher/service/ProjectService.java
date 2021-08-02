@@ -5,8 +5,8 @@ import io.rancher.base.TypeCollection;
 import io.rancher.type.MonitoringOutput;
 import io.rancher.type.Project;
 import io.rancher.type.SetPodSecurityPolicyTemplateInput;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface ProjectService {
@@ -27,12 +27,11 @@ public interface ProjectService {
     Call<Project> update(@Path("id") String id, @Body Project project);
 
     @DELETE("project/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
+
     @POST("project/{id}?action=setpodsecuritypolicytemplate")
     Call<Project> setpodsecuritypolicytemplate(@Path("id") String id, @Body SetPodSecurityPolicyTemplateInput setPodSecurityPolicyTemplateInput);
-    
+
     @POST("project/{id}?action=viewMonitoring")
     Call<MonitoringOutput> viewMonitoring(@Path("id") String id);
-    
 }

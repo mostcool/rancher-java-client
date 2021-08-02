@@ -1,31 +1,19 @@
 package io.rancher.type;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
+@Data
+@Accessors(chain = true)
 public class TimeSeries extends AbstractType {
-    
+
     @JsonProperty("name")
     private String name;
-    
+
     @JsonProperty("points")
     private List<List<Float>> points;
-    
-    public String getName() {
-        return this.name;
-    }
-
-    public void setName(String name) {
-      this.name = name;
-    }
-    
-    public List<List<Float>> getPoints() {
-        return this.points;
-    }
-
-    public void setPoints(List<List<Float>> points) {
-      this.points = points;
-    }
-    
 }

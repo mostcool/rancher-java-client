@@ -4,8 +4,8 @@ import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.CatalogRefresh;
 import io.rancher.type.ProjectCatalog;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface ProjectCatalogService {
@@ -26,9 +26,8 @@ public interface ProjectCatalogService {
     Call<ProjectCatalog> update(@Path("id") String id, @Body ProjectCatalog projectCatalog);
 
     @DELETE("projectCatalog/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
+
     @POST("projectCatalog/{id}?action=refresh")
     Call<CatalogRefresh> refresh(@Path("id") String id);
-    
 }

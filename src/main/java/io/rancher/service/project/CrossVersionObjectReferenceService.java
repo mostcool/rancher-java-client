@@ -3,8 +3,8 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.CrossVersionObjectReference;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface CrossVersionObjectReferenceService {
@@ -25,6 +25,5 @@ public interface CrossVersionObjectReferenceService {
     Call<CrossVersionObjectReference> update(@Path("id") String id, @Body CrossVersionObjectReference crossVersionObjectReference);
 
     @DELETE("crossVersionObjectReference/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

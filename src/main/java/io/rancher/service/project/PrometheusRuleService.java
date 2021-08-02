@@ -3,8 +3,8 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.PrometheusRule;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface PrometheusRuleService {
@@ -25,6 +25,5 @@ public interface PrometheusRuleService {
     Call<PrometheusRule> update(@Path("id") String id, @Body PrometheusRule prometheusRule);
 
     @DELETE("prometheusRule/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

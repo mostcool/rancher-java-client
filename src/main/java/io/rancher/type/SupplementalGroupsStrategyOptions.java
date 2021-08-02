@@ -1,31 +1,19 @@
 package io.rancher.type;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
+
 import java.util.List;
 
+@Data
+@Accessors(chain = true)
 public class SupplementalGroupsStrategyOptions extends AbstractType {
-    
+
     @JsonProperty("ranges")
     private List<IdRange> ranges;
-    
+
     @JsonProperty("rule")
     private String rule;
-    
-    public List<IdRange> getRanges() {
-        return this.ranges;
-    }
-
-    public void setRanges(List<IdRange> ranges) {
-      this.ranges = ranges;
-    }
-    
-    public String getRule() {
-        return this.rule;
-    }
-
-    public void setRule(String rule) {
-      this.rule = rule;
-    }
-    
 }

@@ -1,19 +1,14 @@
 package io.rancher.type;
 
-import io.rancher.base.AbstractType;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class ImportYamlOutput extends AbstractType {
-    
+
     @JsonProperty("message")
     private String message;
-    
-    public String getMessage() {
-        return this.message;
-    }
-
-    public void setMessage(String message) {
-      this.message = message;
-    }
-    
 }

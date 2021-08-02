@@ -3,8 +3,8 @@ package io.rancher.service;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.AzureADConfigApplyInput;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface AzureADConfigApplyInputService {
@@ -25,6 +25,5 @@ public interface AzureADConfigApplyInputService {
     Call<AzureADConfigApplyInput> update(@Path("id") String id, @Body AzureADConfigApplyInput azureADConfigApplyInput);
 
     @DELETE("azureADConfigApplyInput/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

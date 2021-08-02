@@ -2,18 +2,13 @@ package io.rancher.type;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import io.rancher.base.AbstractType;
+import lombok.Data;
+import lombok.experimental.Accessors;
 
+@Data
+@Accessors(chain = true)
 public class CpuInfo extends AbstractType {
-    
+
     @JsonProperty("count")
     private Integer count;
-    
-    public Integer getCount() {
-        return this.count;
-    }
-
-    public void setCount(Integer count) {
-      this.count = count;
-    }
-    
 }

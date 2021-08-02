@@ -3,8 +3,8 @@ package io.rancher.service;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.NotifierStatus;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface NotifierStatusService {
@@ -25,6 +25,5 @@ public interface NotifierStatusService {
     Call<NotifierStatus> update(@Path("id") String id, @Body NotifierStatus notifierStatus);
 
     @DELETE("notifierStatus/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }

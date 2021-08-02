@@ -3,8 +3,8 @@ package io.rancher.service.project;
 import io.rancher.base.Filters;
 import io.rancher.base.TypeCollection;
 import io.rancher.type.project.GlusterfsVolumeSource;
+import okhttp3.ResponseBody;
 import retrofit2.Call;
-import retrofit2.Response;
 import retrofit2.http.*;
 
 public interface GlusterfsVolumeSourceService {
@@ -25,6 +25,5 @@ public interface GlusterfsVolumeSourceService {
     Call<GlusterfsVolumeSource> update(@Path("id") String id, @Body GlusterfsVolumeSource glusterfsVolumeSource);
 
     @DELETE("glusterfsVolumeSource/{id}")
-    Call<Response> delete(@Path("id") String id);
-    
+    Call<ResponseBody> delete(@Path("id") String id);
 }
