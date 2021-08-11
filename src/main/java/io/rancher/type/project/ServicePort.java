@@ -25,5 +25,5 @@ public class ServicePort extends AbstractType {
     private String protocol;
 
     @JsonProperty("targetPort")
-    private Integer targetPort;
+    private String targetPort;
 }

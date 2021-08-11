@@ -37,5 +37,5 @@ public class Endpoint extends AbstractType {
     private String scrapeTimeout;
 
     @JsonProperty("targetPort")
-    private Integer targetPort;
+    private String targetPort;
 }

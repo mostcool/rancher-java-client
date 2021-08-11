@@ -24,7 +24,7 @@ public class HttpIngressPath extends AbstractType {
     private String serviceId;
 
     @JsonProperty("targetPort")
-    private Integer targetPort;
+    private String targetPort;
 
     @JsonProperty("workloadIds")
     private List<String> workloadIds;

@@ -10,10 +10,10 @@ import lombok.experimental.Accessors;
 public class DeploymentConfig extends AbstractType {
 
     @JsonProperty("maxSurge")
-    private Integer maxSurge;
+    private String maxSurge;
 
     @JsonProperty("maxUnavailable")
-    private Integer maxUnavailable;
+    private String maxUnavailable;
 
     @JsonProperty("minReadySeconds")
     private Integer minReadySeconds;

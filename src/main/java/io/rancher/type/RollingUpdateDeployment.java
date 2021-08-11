@@ -10,8 +10,8 @@ import lombok.experimental.Accessors;
 public class RollingUpdateDeployment extends AbstractType {
 
     @JsonProperty("maxSurge")
-    private Integer maxSurge;
+    private String maxSurge;
 
     @JsonProperty("maxUnavailable")
-    private Integer maxUnavailable;
+    private String maxUnavailable;
 }

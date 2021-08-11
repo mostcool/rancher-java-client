@@ -10,7 +10,7 @@ import lombok.experimental.Accessors;
 public class DaemonSetConfig extends AbstractType {
 
     @JsonProperty("maxUnavailable")
-    private Integer maxUnavailable;
+    private String maxUnavailable;
 
     @JsonProperty("minReadySeconds")
     private Integer minReadySeconds;

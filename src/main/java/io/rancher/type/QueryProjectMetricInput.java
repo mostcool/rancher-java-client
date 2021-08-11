@@ -13,7 +13,7 @@ public class QueryProjectMetricInput extends AbstractType {
      * required true
      */
     @JsonProperty("expr")
-    private Integer exprFlag;
+    private String exprFlag;
 
     @JsonProperty("from")
     private String from;

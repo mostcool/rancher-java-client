@@ -10,5 +10,5 @@ import lombok.experimental.Accessors;
 public class RollingUpdateDaemonSet extends AbstractType {
 
     @JsonProperty("maxUnavailable")
-    private Integer maxUnavailable;
+    private String maxUnavailable;
 }

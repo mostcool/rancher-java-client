@@ -18,7 +18,7 @@ public class Rule extends AbstractType {
     private Map<String, Object> annotations;
 
     @JsonProperty("expr")
-    private Integer exprFlag;
+    private String exprFlag;
 
     @JsonProperty("for")
     private String forFlag;
